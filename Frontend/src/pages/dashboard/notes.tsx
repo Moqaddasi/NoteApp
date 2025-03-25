@@ -16,12 +16,20 @@ function Notes() {
     }
   };
 
+  const removeNote = (index: number) => {
+    setNotes(notes.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="Notes" />
       <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {notes.map((note, index) => (
-          <NotesCard key={index} note={note} />
+          <NotesCard
+            key={index}
+            note={note}
+            removeNote={() => removeNote(index)}
+          />
         ))}
       </div>
       <button
