@@ -18,6 +18,12 @@ function SignUp() {
     console.log("Password:", information.password);
     console.log("First Name:", information.firstName);
     console.log("Last Name:", information.lastName);
+    const x = fetch("http://localhost/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(information),
+    });
+    console.log(x);
   };
 
   return (
@@ -44,7 +50,7 @@ function SignUp() {
               Last Name:
             </label>
             <input
-              type="email"
+              type="text"
               value={information.lastName}
               onChange={(e) =>
                 setInformation({ ...information, lastName: e.target.value })
