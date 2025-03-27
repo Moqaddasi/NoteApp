@@ -137,3 +137,9 @@ dist
 .DS_Store
 .vs/
 *.slnx.sqlite
+
+# Ignore build artifacts
+**/bin/
+**/obj/
+**/debug/
+**/release/
