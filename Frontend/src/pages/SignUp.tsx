@@ -18,7 +18,7 @@ function SignUp() {
     console.log("Password:", information.password);
     console.log("First Name:", information.firstName);
     console.log("Last Name:", information.lastName);
-    const x = fetch("http://localhost/auth/register", {
+    const x = fetch("http://localhost:5000/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(information),

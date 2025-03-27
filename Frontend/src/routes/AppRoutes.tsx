@@ -5,6 +5,7 @@ import LandingPage from "../pages/firstPage";
 import Notes from "../pages/dashboard/notes";
 import Home from "../pages/dashboard/home";
 import Dashboard from "../pages/dashboard/dashboard";
+import Favorites from "../pages/dashboard/favorites";
 
 const AppRoutes = () => {
   return (
@@ -15,7 +16,7 @@ const AppRoutes = () => {
       <Route path="/dashboard/*" element={<Dashboard />}>
         <Route path="home" element={<Home />} />
         <Route path="notes" element={<Notes />} />
-        {/* <Route path="favorites" element={<Favorites />} /> */}
+        <Route path="favorites" element={<Favorites />} />
         {/* <Route path="settings" element={<Settings />} /> */}
       </Route>
     </Routes>
