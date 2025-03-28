@@ -1,0 +1,20 @@
+services:
+  authservice:
+    build:
+      context: .
+      dockerfile: AuthService/Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  apigateway:
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - authservice
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
