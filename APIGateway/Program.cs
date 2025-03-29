@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 builder.Services.AddOcelot();
-builder.Services.AddSwaggerForOcelot(builder.Configuration);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -19,7 +21,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 // Add Swagger
-builder.Services.AddSwaggerGen(c =>
+builder.Services
+    .AddSwaggerForOcelot(builder.Configuration)
+    .AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
@@ -68,5 +72,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseOcelot().Wait();
+
+app.MapControllers();
 
 app.Run();

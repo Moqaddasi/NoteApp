@@ -18,3 +18,7 @@ services:
       - authservice
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+
+networks:
+  mynetwork:
+    driver: bridge
